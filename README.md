@@ -18,7 +18,12 @@ Each compilation supports either GMS Version 53 client or Brazil Maple Story and
 
 # Stability:
 
-Crashs may happen in WvsGame.exe / WvsGame.dll and is not ready for production use yet. 
+Crashs may happen in WvsGame.exe / WvsGame.dll and is not ready for production use yet.
+
+# Reversing the database queries
+If you need to reverse enginneer the database queries, check SQL Profiler from Microsoft. It will allow you to debug what queries the server executes against the database.
+
+All the game queries happen in the center server and are inside `database.dll`, you can have an idea of the table fields by using IDA and the query strings.
 
 # Global Maple Story V53 support:
 
