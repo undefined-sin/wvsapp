@@ -25,6 +25,20 @@ If you need to reverse enginneer the database queries, check SQL Profiler from M
 
 All the game queries happen in the center server and are inside `database.dll`, you can have an idea of the table fields by using IDA and the query strings.
 
+# Database structure
+
+The original MapleStory server architecture uses 5 databases.
+
+- Claim - items and items movements in the server.
+- Coupon - coupons used in game.
+- Game World - Gameplay information such as skills, items and characters.
+- Global Account - General account Information.
+- User Connection - Has a table to control when a user is connected.
+
+All the database queries are executed asynchronously in WVsCenter server, except some login queries in WvsLogin server.
+
+The architecture relies heavelily on stored procedures to execute game logic and sometimes stores the binary data directly into the game tables.
+
 # Global Maple Story V53 support:
 
 The BMS V8 binaries have a packet structures similar to GMS V53 which allows a GMS client  to connect  to BMS backend. Although higher versions may be supported until character selection. There are a lot of changes during version 54 that breaks some packet structures, for example, V54 is prepared to support multiple pets, while v53 not. 
