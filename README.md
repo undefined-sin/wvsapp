@@ -16,7 +16,16 @@ After compilation the final result will be a DLL one dll for the client componen
 
 Each compilation supports either GMS Version 53 client or Brazil Maple Story and the version can be set in Config.cpp in WvsCommon project, along with other debug flags. 
 
-# Stability:
+# Pre requirement
+
+To run the server binaries, it properly you usually need to setup two DNS entries in hosts file and reference it in your configuration.
+
+```
+127.0.0.1 bms_public
+127.0.0.1 bmsdb
+```
+
+# Stability
 
 Crashs may happen in WvsGame.exe / WvsGame.dll and is not ready for production use yet.
 
