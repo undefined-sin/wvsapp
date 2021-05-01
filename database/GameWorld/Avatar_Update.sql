@@ -13,10 +13,9 @@ GO
 	a << b = a * power(2, b)
 	a >> b = a / power(2, b)
 
-
+For some reason the information about look and feel comes packed, so this function basically unpacks it and update the proper tables.
 */
 ALTER PROCEDURE [dbo].[Avatar_Update]
-	-- Add the parameters for the stored procedure here
 	@CharacterID int,
 	@p2 varbinary(20),
 	@p3 varbinary(2)
@@ -87,8 +86,7 @@ BEGIN
 
 	SELECT @firstBit as firstByte, CAST((@secondBit * power(2, 3)) AS int) as secondByte,  @Gender as Gender, @Skin as Skin, @nFaceLow as Face, @anHairEquipZero as Hair, @fourBit, CASE @fourBit & 1 WHEN 1 THEN 1 WHEN 0 THEN 0 END;
 	
-    -- Insert statements for procedure here
-	RETURN(0)
+  	RETURN(0)
 END
 
 
