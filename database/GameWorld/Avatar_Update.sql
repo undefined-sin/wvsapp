@@ -6,6 +6,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 /*
+ Not even sure if this is the best approach in TSQL, but it works properly when saving character look.
+
  for positive ints:
 
 	a << b = a * power(2, b)
