@@ -27,7 +27,7 @@ To run the server binaries, it properly you usually need to setup two DNS entrie
 
 # Stability
 
-Crashs may happen in WvsGame.exe / WvsGame.dll and is not ready for production use yet.
+We ran a nostalgic server with it supporting 50 + players and it was stable. I hope Nexon releases a classic server one day. Until then, you may want to take a look into [MapleLegends](https://maplelegends.com).
 
 # Reversing the database queries
 If you need to reverse enginneer the database queries, check SQL Profiler from Microsoft. It will allow you to debug what queries the server executes against the database.
