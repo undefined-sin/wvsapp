@@ -39,6 +39,40 @@ All the database queries are executed asynchronously in WVsCenter server, except
 
 The architecture relies heavelily on stored procedures to execute game logic and sometimes stores the binary data directly into the game tables.
 
+The procedures naming convention matches the function names found in the PDB files. Eg: `CheckEULA`, `CheckPassword`, `MoveCashItemLtoS`.
+
+A typical reverse engineered procedure looks like this: 
+
+```sql
+
+ALTER PROCEDURE [dbo].[MoveCashItemLtoS]
+@AccountID int,
+@CharacterID int,
+@SN bigint,
+@number int output ,
+@expiration datetime output 
+AS
+BEGIN
+	SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+	BEGIN TRANSACTION;
+		UPDATE ItemLocker SET CharacterID = @CharacterID WHERE SN = @SN AND AccountID = @AccountID;
+		IF @@ROWCOUNT < 1 
+		BEGIN
+			return (1);
+		END;
+		SELECT @number = Number, @expiration = ExpiredDate FROM ItemLocker WHERE SN = @SN AND CharacterID = @CharacterID;
+		DECLARE @ItemID int;
+		SELECT @ItemID = ItemID FROM ItemLocker WHERE SN = @SN;
+		SELECT * FROM CashItemBundle WHERE CashItemSN = @SN;
+		IF @@ROWCOUNT < 1 AND (@ItemID / 1000000 != 1) AND NOT(@ItemID >= 5000000 AND @ItemID <= 5000100) 
+		BEGIN
+			INSERT INTO CashItemBundle VALUES(@SN, @number);
+		END;
+	COMMIT TRANSACTION;
+	return (0);
+END
+```
+
 # Global Maple Story V53 support:
 
 The BMS V8 binaries have a packet structures similar to GMS V53 which allows a GMS client  to connect  to BMS backend. Although higher versions may be supported until character selection. There are a lot of changes during version 54 that breaks some packet structures, for example, V54 is prepared to support multiple pets, while v53 not. 
