@@ -25,7 +25,7 @@ ALTER PROCEDURE [dbo].[CreateNewCharacter]
 	@DEX int,
 	@INT int,
 	@LUK int,
-	@CheckSum int,--or not?
+	@CheckSum int,
 	@NewCharacterID int output
 	
 AS
