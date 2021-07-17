@@ -25,7 +25,7 @@ INSERT INTO ItemInitSN VALUES(7, 0);
 The hosts file is used to define dns entries for the server.
 
 ```text
-127.0.0.1 bms_public
+127.0.0.1 bms_server
 127.0.0.1 bmsdb
 ```
 You can change bms_public to your public ip address to bind the server to a public ip.
