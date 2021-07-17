@@ -36,3 +36,8 @@ PublicIP = bms_server
 PrivateIP = localhost 
 port = 8585
 ```
+
+> When I start the server it says that the Center server is already connected?
+
+- Make sure all `wvscenter` is not executed in the background.
+- Set the `CenterAddress` in `Accounts.GameWorld` table to null.
