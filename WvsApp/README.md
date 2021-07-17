@@ -28,5 +28,11 @@ The hosts file is used to define dns entries for the server.
 127.0.0.1 bms_server
 127.0.0.1 bmsdb
 ```
-You can change bms_public to your public ip address to bind the server to a public ip.
+You can change bms_server to your public ip address to bind the server to a public ip.
 
+The configuration files should define the `PublicIP` and the `PrivateIP` as the dns entries.
+```
+PublicIP = bms_server
+PrivateIP = localhost 
+port = 8585
+```
